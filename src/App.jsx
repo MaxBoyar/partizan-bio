@@ -200,7 +200,7 @@ export default function App() {
           <LinkCard
             href="https://discord.gg/prrp"
             title="PRRP - Allowlist 5.0"
-            subtitle="שרת הדיסקורד של שרת הפייבאם"
+            subtitle="שרת הדיסקורד של שרת ה FIVEM"
             isFeatured={true}
             badgeIcon={
               <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
