@@ -158,7 +158,7 @@ export default function App() {
         <div className="w-full flex flex-col space-y-3.5">
           {/* 1. KICK (TOP FEATURED LIVE STREAM CARD) */}
           <LinkCard
-            href="https://kick.com/partizan"
+            href="https://kick.com/partizanktv"
             title="Kick"
             subtitle="ערוץ הקיק הרשמי"
             isFeatured={true}
@@ -175,7 +175,7 @@ export default function App() {
 
           {/* 2. YOUTUBE (TOP FEATURED OFFICIAL VIDEO CHANNEL) */}
           <LinkCard
-            href="https://youtube.com/@partizan"
+            href="https://www.youtube.com/@PartizaNYT"
             title="Youtube"
             subtitle="ערוץ היוטיוב הרשמי"
             isFeatured={true}
@@ -220,7 +220,7 @@ export default function App() {
 
           {/* 4. PARTIZAN EMPIRE DISCORD SERVER */}
           <LinkCard
-            href="https://discord.gg/partizan"
+            href="https://discord.gg/G46P86Q5GS"
             title="PartizaN Empire"
             subtitle="שרת הדיסקורד הרשמי של פארטיזאן"
             isFeatured={true}
@@ -244,7 +244,7 @@ export default function App() {
 
           {/* 5. TIKTOK */}
           <LinkCard
-            href="https://tiktok.com/@partizan"
+            href="https://www.tiktok.com/@oryan_azulay"
             title="TikTok"
             subtitle="קליפים ויראליים, רגעי שיא וצחוקים מהלייבים"
             isFeatured={true}
@@ -261,7 +261,7 @@ export default function App() {
 
           {/* 6. INSTAGRAM */}
           <LinkCard
-            href="https://instagram.com/partizan"
+            href="https://www.instagram.com/oryan_azulay/"
             title="Instagram"
             subtitle="סטוריז מאחורי הקלעים, עדכוני לייבים ותמונות בלעדיות"
             isFeatured={true}
