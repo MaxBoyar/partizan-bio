@@ -160,7 +160,7 @@ export default function App() {
           {/* 1. KICK (TOP FEATURED LIVE STREAM CARD) */}
           <LinkCard
             href="https://kick.com/partizanktv"
-            title="Kick"
+            title="Kick-test"
             subtitle="ערוץ הקיק הרשמי"
             isFeatured={true}
             onClick={playIceClick}
