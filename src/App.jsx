@@ -5,6 +5,7 @@ import Toast from './components/Toast';
 import { useSoundEffects } from './hooks/useSoundEffects';
 import { Handshake, TvMinimalPlay, Gamepad2, Cast, Trophy, Users } from 'lucide-react';
 import partizanLogo from './assets/partizan-logo.png';
+import partizanLogoLive from './assets/partizanBlueLogoLive.gif';
 import prrpLogo from './assets/prrp-logo.png';
 
 export default function App() {
@@ -91,9 +92,9 @@ export default function App() {
 
               {/* PARTIZAN OFFICIAL ATTACHED LOGO */}
               <img
-                src={partizanLogo}
+                src={partizanLogoLive}
                 alt="Partizan Gaming Logo"
-                className="w-full h-full object-contain p-2 relative z-10 transition-transform duration-500 group-hover:scale-110 drop-shadow-[0_0_12px_rgba(0,180,255,0.7)]"
+                //className="w-full h-full object-contain p-2 relative z-10 transition-transform duration-500 group-hover:scale-110 drop-shadow-[0_0_12px_rgba(0,180,255,0.7)]"
                 loading="eager"
               />
 
