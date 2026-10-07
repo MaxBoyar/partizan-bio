@@ -292,9 +292,12 @@ export default function App() {
           </a>
 
           {/* Credits & Copyright */}
-          <div>
+          <div className="space-y-1">
             <p className="text-xs text-slate-400 font-medium">
               © 2026 כל הזכויות שמורות ל- <span className="text-cyan-300 font-semibold font-display">PARTIZAN</span>
+            </p>
+            <p className="text-[11px] text-slate-400 font-medium">
+              Developed by <span className="text-cyan-300 font-semibold">MaxGG-Dev</span>
             </p>
           </div>
         </footer>
