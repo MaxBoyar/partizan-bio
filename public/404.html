@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Partizan | מעביר קישור...</title>
+    <script>
+      (function () {
+        var routes = {
+          '/kick': 'https://kick.com/partizanktv',
+          '/live': 'https://kick.com/partizanktv',
+          '/youtube': 'https://www.youtube.com/@PartizaNYT',
+          '/yt': 'https://www.youtube.com/@PartizaNYT',
+          '/prrp': 'https://discord.gg/prrp',
+          '/fivem': 'https://discord.gg/prrp',
+          '/pr-west': 'https://discord.gg/PZ6kqmGdn',
+          '/prwest': 'https://discord.gg/PZ6kqmGdn',
+          '/rdr': 'https://discord.gg/PZ6kqmGdn',
+          '/discord': 'https://discord.gg/G46P86Q5GS',
+          '/partizan-empire': 'https://discord.gg/G46P86Q5GS',
+          '/empire': 'https://discord.gg/G46P86Q5GS',
+          '/tiktok': 'https://www.tiktok.com/@oryan_azulay',
+          '/instagram': 'https://www.instagram.com/oryan_azulay/',
+          '/insta': 'https://www.instagram.com/oryan_azulay/',
+          '/ig': 'https://www.instagram.com/oryan_azulay/'
+        };
+
+        var path = window.location.pathname.replace(/\/+$/, '').toLowerCase();
+        if (routes[path]) {
+          window.location.replace(routes[path]);
+        } else {
+          window.location.replace('/');
+        }
+      })();
+    </script>
+  </head>
+  <body style="background:#030712;color:#e2e8f0;font-family:sans-serif;display:flex;align-items:center;justify-content:center;min-height:100vh;margin:0;">
+    <p>מעביר אותך...</p>
+  </body>
+</html>
+

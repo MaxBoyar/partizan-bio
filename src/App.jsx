@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Snowfall from './components/Snowfall';
 import LinkCard from './components/LinkCard';
 import Toast from './components/Toast';
 import { useSoundEffects } from './hooks/useSoundEffects';
+import { LINKS, getRedirectRoute } from './routes';
 import { Handshake, TvMinimalPlay, Gamepad2, Cast, Trophy, Users } from 'lucide-react';
 import partizanLogo from './assets/partizan-logo.png';
 import partizanLogoLive from './assets/partizanBlueLogoLive.gif';
@@ -14,7 +15,33 @@ export default function App() {
   const [showToast, setShowToast] = useState(false);
   const isLive = true;
 
+  // בדיקה האם הנתיב הנוכחי הוא קישור קצר להפניה מהירה
+  const redirectTarget = getRedirectRoute(window.location.pathname);
+
+  useEffect(() => {
+    if (redirectTarget) {
+      window.location.replace(redirectTarget.url);
+    }
+  }, [redirectTarget]);
+
   const { audioPlaying, toggleAudio, playIceClick } = useSoundEffects();
+
+  if (redirectTarget) {
+    return (
+      <div className="min-h-screen winter-grid relative flex flex-col items-center justify-center text-slate-100 px-4 text-center">
+        <div className="w-12 h-12 rounded-full border-2 border-cyan-400 border-t-transparent animate-spin mb-4" />
+        <h1 className="text-xl font-bold text-cyan-300 mb-1">
+          מעביר אותך ל-{redirectTarget.name}...
+        </h1>
+        <a
+          href={redirectTarget.url}
+          className="text-xs text-slate-400 hover:text-cyan-300 underline mt-2"
+        >
+          לחץ כאן אם המעבר לא מתבצע אוטומטית
+        </a>
+      </div>
+    );
+  }
 
   const triggerToast = (msg) => {
     setToastMessage(msg);
@@ -160,7 +187,7 @@ export default function App() {
         <div className="w-full flex flex-col space-y-3.5">
           {/* 1. KICK (TOP FEATURED LIVE STREAM CARD) */}
           <LinkCard
-            href="https://kick.com/partizanktv"
+            href={LINKS.kick}
             title="Kick"
             subtitle="ערוץ הקיק הרשמי"
             isFeatured={true}
@@ -177,7 +204,7 @@ export default function App() {
 
           {/* 2. YOUTUBE (TOP FEATURED OFFICIAL VIDEO CHANNEL) */}
           <LinkCard
-            href="https://www.youtube.com/@PartizaNYT"
+            href={LINKS.youtube}
             title="Youtube"
             subtitle="ערוץ היוטיוב הרשמי"
             isFeatured={true}
@@ -198,7 +225,7 @@ export default function App() {
 
           {/* 3. PRRP - ALLOWLIST 5.0 */}
           <LinkCard
-            href="https://discord.gg/prrp"
+            href={LINKS.prrp}
             title="PRRP - Allowlist 5.0"
             subtitle="שרת הדיסקורד של שרת ה FIVEM"
             isFeatured={true}
@@ -222,7 +249,7 @@ export default function App() {
 
           {/* 4. PRWEST REBORN */}
           <LinkCard
-            href="https://discord.gg/PZ6kqmGdn"
+            href={LINKS.prWest}
             title="PRWest Reborn"
             subtitle="שרת הדיסקורד של שרת ה RDR"
             isFeatured={true}
@@ -246,7 +273,7 @@ export default function App() {
 
           {/* 5. PARTIZAN EMPIRE DISCORD SERVER */}
           <LinkCard
-            href="https://discord.gg/G46P86Q5GS"
+            href={LINKS.discord}
             title="PartizaN Empire"
             subtitle="שרת הדיסקורד הרשמי של פארטיזאן"
             isFeatured={true}
@@ -270,7 +297,7 @@ export default function App() {
 
           {/* 6. TIKTOK */}
           <LinkCard
-            href="https://www.tiktok.com/@oryan_azulay"
+            href={LINKS.tiktok}
             title="TikTok"
             subtitle="קליפים ויראליים, רגעי שיא וצחוקים מהלייבים"
             isFeatured={true}
@@ -285,9 +312,9 @@ export default function App() {
             }
           />
 
-          {/* 6. INSTAGRAM */}
+          {/* 7. INSTAGRAM */}
           <LinkCard
-            href="https://www.instagram.com/oryan_azulay/"
+            href={LINKS.instagram}
             title="Instagram"
             subtitle="סטוריז מאחורי הקלעים, עדכוני לייבים ותמונות בלעדיות"
             isFeatured={true}
