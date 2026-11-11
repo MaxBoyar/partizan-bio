@@ -162,7 +162,7 @@ export default function AnnouncementBanner({ onActionClick }) {
 
           {/* טקסט ההכרזה המבוקש */}
           <div className="relative z-10 text-right">
-            <p className="text-base sm:text-lg font-extrabold text-slate-100 leading-relaxed">
+            <p className="text-base sm:text-lg font-extrabold text-slate-100 leading-9 sm:leading-9">
               ב־
               <span className="whitespace-nowrap text-transparent bg-clip-text bg-gradient-to-r from-amber-300 via-pink-400 to-fuchsia-400 underline decoration-pink-500/50 decoration-2 underline-offset-4">
                 19 בנובמבר
@@ -170,7 +170,7 @@ export default function AnnouncementBanner({ onActionClick }) {
               עולים ללייבים של{' '}
               <span
                 dir="ltr"
-                className="inline-block whitespace-nowrap px-2 py-0.5 mx-0.5 rounded-md bg-gradient-to-r from-fuchsia-600/30 to-orange-500/30 border border-pink-400/40 text-pink-200 font-display font-bold tracking-wide align-baseline"
+                className="inline-block whitespace-nowrap px-2 py-0.5 mx-0.5 leading-snug rounded-md bg-gradient-to-r from-fuchsia-600/30 to-orange-500/30 border border-pink-400/40 text-pink-200 font-display font-bold tracking-wide align-middle"
               >
                 GTA 6
               </span>{' '}
