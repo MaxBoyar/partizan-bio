@@ -147,3 +147,25 @@ body {
   border: 1px solid rgba(0, 180, 255, 0.35);
   backdrop-filter: blur(8px);
 }
+
+/* GTA VI Special Announcement Gaming Card */
+.gta-announcement-card {
+  background: linear-gradient(145deg, rgba(12, 18, 44, 0.94) 0%, rgba(6, 11, 26, 0.98) 100%);
+  box-shadow:
+    0 16px 40px -10px rgba(0, 0, 0, 0.8),
+    0 0 32px rgba(217, 70, 239, 0.22),
+    0 0 20px rgba(0, 180, 255, 0.18),
+    0 0 0 1px rgba(236, 72, 153, 0.25) inset;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.gta-announcement-card:hover {
+  border-color: rgba(232, 121, 249, 0.85);
+  box-shadow:
+    0 20px 50px -10px rgba(0, 0, 0, 0.88),
+    0 0 42px rgba(217, 70, 239, 0.38),
+    0 0 28px rgba(0, 210, 255, 0.3),
+    0 0 0 1px rgba(244, 114, 182, 0.45) inset;
+}

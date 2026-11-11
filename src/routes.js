@@ -44,14 +44,27 @@ export const REDIRECT_ROUTES = {
 };
 
 /**
- * מחפש התאמה לנתיב הנוכחי (ללא תלות באותיות גדולות/קטנות או סלאש בסוף)
+ * מחפש התאמה לנתיב הנוכחי או לפרמטר ?r= (עבור GitHub Pages)
  */
-export function getRedirectRoute(pathname = window.location.pathname) {
-  if (!pathname || pathname === '/') return null;
+export function getRedirectRoute(
+  pathname = window.location.pathname,
+  search = window.location.search
+) {
+  const params = new URLSearchParams(search);
+  const queryRoute = params.get('r');
+  const rawPath = queryRoute || pathname;
 
-  // ניקוי סלאש סופי והמרה לאותיות קטנות
-  const normalizedPath = pathname.replace(/\/+$/, '').toLowerCase();
+  if (!rawPath || rawPath === '/') return null;
 
-  return REDIRECT_ROUTES[normalizedPath] || null;
+  // ניקוי סלאש סופי, וידוא סלאש בהתחלה והמרה לאותיות קטנות
+  const withLeadingSlash = rawPath.startsWith('/') ? rawPath : `/${rawPath}`;
+  const normalizedPath = withLeadingSlash.replace(/\/+$/, '').toLowerCase();
+
+  const match = REDIRECT_ROUTES[normalizedPath];
+  if (!match) return null;
+
+  return {
+    ...match,
+    routePath: normalizedPath,
+  };
 }
-
