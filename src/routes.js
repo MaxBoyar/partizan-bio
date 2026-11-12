@@ -2,6 +2,7 @@
 // כל נתיב מוביל לקישור החיצוני המתאים
 
 export const LINKS = {
+  partizanIl: 'https://discord.gg/GWpyM5u7zr',
   kick: 'https://kick.com/partizanktv',
   youtube: 'https://www.youtube.com/@PartizaNYT',
   prrp: 'https://discord.gg/prrp',
@@ -12,6 +13,10 @@ export const LINKS = {
 };
 
 export const REDIRECT_ROUTES = {
+  // 0. PartizaN-IL Public - Israeli FiveM Discord
+  '/partizan-il': { url: LINKS.partizanIl, name: 'PartizaN-IL Public' },
+  '/il': { url: LINKS.partizanIl, name: 'PartizaN-IL Public' },
+
   // 1. Kick
   '/kick': { url: LINKS.kick, name: 'Kick' },
   '/live': { url: LINKS.kick, name: 'Kick' },

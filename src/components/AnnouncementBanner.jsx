@@ -18,7 +18,7 @@ function getTimeRemaining() {
   return { days, hours, minutes, seconds, isLiveNow: diff === 0 };
 }
 
-export default function AnnouncementBanner({ onActionClick }) {
+export default function AnnouncementBanner() {
   const [activeImage, setActiveImage] = useState(0);
   const [timeLeft, setTimeLeft] = useState(getTimeRemaining);
 
@@ -47,19 +47,19 @@ export default function AnnouncementBanner({ onActionClick }) {
       aria-label="מודעות ועדכונים"
       className="w-full mb-6 relative group"
     >
-      {/* הילה חיצונית משולבת: ציאן של Partizan + ורוד-סגול-כתום של GTA 6 */}
+      {/* הילה חיצונית בסגנון GTA VI Vice City */}
       <div
-        className="absolute -inset-1 rounded-3xl bg-gradient-to-r from-cyan-500/40 via-fuchsia-500/45 to-orange-500/40 blur-xl opacity-75 group-hover:opacity-100 transition duration-700 pointer-events-none"
+        className="absolute -inset-1 rounded-3xl bg-gradient-to-r from-amber-500/40 via-pink-500/50 to-purple-600/45 blur-xl opacity-75 group-hover:opacity-100 transition duration-700 pointer-events-none"
         aria-hidden="true"
       />
 
       {/* כרטיס ראשי */}
-      <div className="relative rounded-2xl overflow-hidden gta-announcement-card border border-fuchsia-400/40 shadow-[0_15px_45px_rgba(0,0,0,0.75)]">
-        {/* פס ניאון עליון בסגנון GTA VI + Partizan */}
-        <div className="h-1 w-full bg-gradient-to-r from-cyan-400 via-fuchsia-500 to-amber-400" />
+      <div className="relative rounded-2xl overflow-hidden gta-announcement-card border border-pink-400/50 shadow-[0_15px_45px_rgba(0,0,0,0.8)]">
+        {/* פס ניאון עליון בסגנון GTA VI */}
+        <div className="h-1 w-full bg-gradient-to-r from-amber-400 via-pink-500 to-purple-500" />
 
         {/* באנר ויזואלי עם תמונות GTA 6 המצורפות */}
-        <div className="relative h-44 sm:h-52 w-full overflow-hidden bg-[#090d1e]">
+        <div className="relative h-44 sm:h-52 w-full overflow-hidden bg-[#120724]">
           {images.map((img, index) => (
             <img
               key={img.alt}
@@ -73,13 +73,13 @@ export default function AnnouncementBanner({ onActionClick }) {
             />
           ))}
 
-          {/* שכבות גרדיאנט להתאמה לעיצוב הכהה של האתר */}
-          <div className="absolute inset-0 bg-gradient-to-t from-[#060c1f] via-[#060c1f]/45 to-transparent" />
-          <div className="absolute inset-0 bg-gradient-to-r from-fuchsia-950/35 via-transparent to-cyan-950/35 mix-blend-overlay" />
+          {/* שכבות גרדיאנט להתאמה לעיצוב GTA VI של האתר */}
+          <div className="absolute inset-0 bg-gradient-to-t from-[#120724] via-[#120724]/45 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-r from-fuchsia-950/35 via-transparent to-amber-950/30 mix-blend-overlay" />
 
           {/* תג תאריך מרחף על התמונה */}
-          <div className="absolute top-3 right-3 z-10 flex items-center gap-1.5 px-3 py-1 rounded-xl bg-black/70 backdrop-blur-md border border-fuchsia-400/50 shadow-[0_0_15px_rgba(217,70,239,0.4)]">
-            <Calendar className="w-3.5 h-3.5 text-fuchsia-400" />
+          <div className="absolute top-3 right-3 z-10 flex items-center gap-1.5 px-3 py-1 rounded-xl bg-black/70 backdrop-blur-md border border-pink-400/50 shadow-[0_0_15px_rgba(236,72,153,0.4)]">
+            <Calendar className="w-3.5 h-3.5 text-amber-300" />
             <span className="text-xs font-extrabold text-white tracking-wide">
               19 בנובמבר
             </span>
@@ -89,17 +89,17 @@ export default function AnnouncementBanner({ onActionClick }) {
           <button
             type="button"
             onClick={() => setActiveImage((prev) => (prev === 0 ? 1 : 0))}
-            className="absolute top-3 left-3 z-10 flex items-center gap-1.5 px-2.5 py-1 rounded-xl bg-black/65 hover:bg-black/85 backdrop-blur-md border border-cyan-400/40 hover:border-fuchsia-400 text-[11px] font-semibold text-cyan-200 hover:text-white transition-all active:scale-95"
+            className="absolute top-3 left-3 z-10 flex items-center gap-1.5 px-2.5 py-1 rounded-xl bg-black/65 hover:bg-black/85 backdrop-blur-md border border-pink-400/40 hover:border-amber-400 text-[11px] font-semibold text-pink-200 hover:text-white transition-all active:scale-95"
             title="החלף תמונת רקע GTA 6"
           >
-            <ImageIcon className="w-3 h-3 text-fuchsia-400" />
+            <ImageIcon className="w-3 h-3 text-amber-300" />
             <span>{activeImage === 0 ? '1/2' : '2/2'}</span>
           </button>
 
           {/* כותרת מרכזית על גבי החלק התחתון של התמונה */}
           <div className="absolute bottom-2.5 right-4 left-4 z-10 flex items-end justify-between">
             <div>
-              <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-md bg-gradient-to-r from-orange-500/80 to-pink-600/80 text-white text-[11px] font-black tracking-wider uppercase mb-1 shadow-sm">
+              <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-md bg-gradient-to-r from-orange-500/85 to-pink-600/85 text-white text-[11px] font-black tracking-wider uppercase mb-1 shadow-sm">
                 <Flame className="w-3 h-3 fill-current animate-bounce" />
                 <span>SPECIAL LIVE MARATHON</span>
               </div>
@@ -140,7 +140,7 @@ export default function AnnouncementBanner({ onActionClick }) {
                   y="38"
                   direction="ltr"
                   textAnchor="middle"
-                  fill="#67e8f9"
+                  fill="#f9a8d4"
                   className="font-display"
                   fontSize="9.5"
                   fontWeight="900"
@@ -153,7 +153,7 @@ export default function AnnouncementBanner({ onActionClick }) {
         </div>
 
         {/* גוף ההודעה והטקסט */}
-        <div className="p-4 sm:p-5 space-y-4 bg-gradient-to-b from-[#060c1f] via-[#071128] to-[#050b1a] relative">
+        <div className="p-4 sm:p-5 space-y-4 bg-gradient-to-b from-[#120724] via-[#17092e] to-[#0d051c] relative">
           {/* רשת סייבר עדינה ברקע */}
           <div
             className="absolute inset-0 bg-[radial-gradient(#ec4899_1px,transparent_1px)] [background-size:16px_16px] opacity-10 pointer-events-none"
@@ -185,29 +185,29 @@ export default function AnnouncementBanner({ onActionClick }) {
           {/* טיימר ספירה לאחור ל-19 בנובמבר */}
           {!timeLeft.isLiveNow && (
             <div className="relative z-10 grid grid-cols-4 gap-2 pt-1" dir="ltr">
-              <div className="flex flex-col items-center justify-center py-2 px-1 rounded-xl bg-[#040917]/90 border border-cyan-500/30 shadow-inner">
-                <span className="font-display text-lg sm:text-xl font-black text-cyan-300">
+              <div className="flex flex-col items-center justify-center py-2 px-1 rounded-xl bg-[#0a0416]/90 border border-amber-500/35 shadow-inner">
+                <span className="font-display text-lg sm:text-xl font-black text-amber-300">
                   {String(timeLeft.days).padStart(2, '0')}
                 </span>
-                <span className="text-[10px] font-bold text-slate-400">ימים</span>
+                <span className="text-[10px] font-bold text-pink-200/70">ימים</span>
               </div>
-              <div className="flex flex-col items-center justify-center py-2 px-1 rounded-xl bg-[#040917]/90 border border-fuchsia-500/30 shadow-inner">
+              <div className="flex flex-col items-center justify-center py-2 px-1 rounded-xl bg-[#0a0416]/90 border border-pink-500/35 shadow-inner">
                 <span className="font-display text-lg sm:text-xl font-black text-pink-300">
                   {String(timeLeft.hours).padStart(2, '0')}
                 </span>
-                <span className="text-[10px] font-bold text-slate-400">שעות</span>
+                <span className="text-[10px] font-bold text-pink-200/70">שעות</span>
               </div>
-              <div className="flex flex-col items-center justify-center py-2 px-1 rounded-xl bg-[#040917]/90 border border-fuchsia-500/30 shadow-inner">
-                <span className="font-display text-lg sm:text-xl font-black text-pink-300">
+              <div className="flex flex-col items-center justify-center py-2 px-1 rounded-xl bg-[#0a0416]/90 border border-fuchsia-500/35 shadow-inner">
+                <span className="font-display text-lg sm:text-xl font-black text-fuchsia-300">
                   {String(timeLeft.minutes).padStart(2, '0')}
                 </span>
-                <span className="text-[10px] font-bold text-slate-400">דקות</span>
+                <span className="text-[10px] font-bold text-pink-200/70">דקות</span>
               </div>
-              <div className="flex flex-col items-center justify-center py-2 px-1 rounded-xl bg-[#040917]/90 border border-orange-500/30 shadow-inner">
-                <span className="font-display text-lg sm:text-xl font-black text-amber-300">
+              <div className="flex flex-col items-center justify-center py-2 px-1 rounded-xl bg-[#0a0416]/90 border border-purple-500/35 shadow-inner">
+                <span className="font-display text-lg sm:text-xl font-black text-purple-300">
                   {String(timeLeft.seconds).padStart(2, '0')}
                 </span>
-                <span className="text-[10px] font-bold text-slate-400">שניות</span>
+                <span className="text-[10px] font-bold text-pink-200/70">שניות</span>
               </div>
             </div>
           )}

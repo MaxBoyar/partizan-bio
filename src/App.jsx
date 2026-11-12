@@ -8,7 +8,8 @@ import { LINKS, getRedirectRoute } from './routes';
 import { trackSiteVisit, trackButtonClick, trackReroute } from './analytics';
 import { Handshake, TvMinimalPlay, Gamepad2, Cast, Trophy, Users } from 'lucide-react';
 import partizanLogo from './assets/partizan-logo.png';
-import partizanLogoLive from './assets/partizanBlueLogoLive.gif';
+import partizanMainLogo from './assets/partizan-main-logo.jpg';
+import partizanIlLogo from './assets/partizan-il-logo.webp';
 import prrpLogo from './assets/prrp-logo.png';
 import prwestLogo from './assets/prwest-logo.png';
 
@@ -16,7 +17,6 @@ export default function App() {
   const [toastMessage, setToastMessage] = useState('');
   const [showToast, setShowToast] = useState(false);
   const hasTrackedMount = useRef(false);
-  const isLive = true;
 
   // בדיקה האם הנתיב הנוכחי הוא קישור קצר להפניה מהירה
   const redirectTarget = getRedirectRoute(
@@ -44,7 +44,7 @@ export default function App() {
     }
   }, [redirectTarget]);
 
-  const { audioPlaying, toggleAudio, playIceClick } = useSoundEffects();
+  const { playIceClick } = useSoundEffects();
 
   const handleTrackedClick = (id, name, url = null, category = 'social_link') => {
     playIceClick();
@@ -54,13 +54,13 @@ export default function App() {
   if (redirectTarget) {
     return (
       <div className="min-h-screen winter-grid relative flex flex-col items-center justify-center text-slate-100 px-4 text-center">
-        <div className="w-12 h-12 rounded-full border-2 border-cyan-400 border-t-transparent animate-spin mb-4" />
-        <h1 className="text-xl font-bold text-cyan-300 mb-1">
+        <div className="w-12 h-12 rounded-full border-2 border-pink-400 border-t-transparent animate-spin mb-4" />
+        <h1 className="text-xl font-bold text-pink-300 mb-1">
           מעביר אותך ל-{redirectTarget.name}...
         </h1>
         <a
           href={redirectTarget.url}
-          className="text-xs text-slate-400 hover:text-cyan-300 underline mt-2"
+          className="text-xs text-slate-400 hover:text-pink-300 underline mt-2"
         >
           לחץ כאן אם המעבר לא מתבצע אוטומטית
         </a>
@@ -79,7 +79,7 @@ export default function App() {
   const handleShare = () => {
     handleTrackedClick('share', 'Share Page', window.location.href, 'utility');
     const shareData = {
-      title: 'Partizan - עמוד הקישורים הרשמי ❄️🎮',
+      title: 'Partizan - עמוד הקישורים הרשמי 🌴🎮',
       text: 'עקבו אחרי פרטיזן בקיק, יוטיוב, דיסקורד וכל הרשתות:',
       url: window.location.href,
     };
@@ -100,25 +100,25 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen winter-grid relative flex flex-col items-center justify-start text-slate-100 selection:bg-cyan-500 selection:text-black">
-      {/* 1. CONTINUOUS WINTER SNOWFALL */}
+    <div className="min-h-screen winter-grid relative flex flex-col items-center justify-start text-slate-100 selection:bg-pink-500 selection:text-white">
+      {/* 1. CONTINUOUS VICE CITY NEON PARTICLES */}
       <Snowfall count={45} />
 
-      {/* 2. ATMOSPHERIC BACKGROUND GLOWS */}
-      <div className="pointer-events-none fixed top-0 left-1/2 -translate-x-1/2 w-[650px] h-[380px] bg-gradient-to-b from-cyan-500/15 via-sky-600/5 to-transparent blur-[120px] -z-10" aria-hidden="true" />
-      <div className="pointer-events-none fixed -bottom-24 -left-24 w-80 h-80 bg-blue-600/10 blur-[100px] -z-10" aria-hidden="true" />
-      <div className="pointer-events-none fixed -bottom-24 -right-24 w-80 h-80 bg-cyan-600/10 blur-[100px] -z-10" aria-hidden="true" />
+      {/* 2. ATMOSPHERIC GTA VI SUNSET & NEON BACKGROUND GLOWS */}
+      <div className="pointer-events-none fixed top-0 left-1/2 -translate-x-1/2 w-[680px] h-[400px] bg-gradient-to-b from-pink-500/20 via-orange-500/10 to-transparent blur-[125px] -z-10" aria-hidden="true" />
+      <div className="pointer-events-none fixed -bottom-24 -left-24 w-80 h-80 bg-purple-600/15 blur-[110px] -z-10" aria-hidden="true" />
+      <div className="pointer-events-none fixed -bottom-24 -right-24 w-80 h-80 bg-pink-600/15 blur-[110px] -z-10" aria-hidden="true" />
 
       {/* 3. TOP UTILITY HEADER */}
       <header className="w-full max-w-lg px-4 pt-5 pb-2 flex items-center justify-between z-20">
-        <span className="text-[11px] font-bold text-cyan-300/80 font-gaming tracking-widest px-3 py-1 rounded-full frost-badge">
+        <span className="text-[11px] font-bold text-pink-200/90 font-gaming tracking-widest px-3 py-1 rounded-full frost-badge shadow-[0_0_15px_rgba(236,72,153,0.2)]">
           PARTIZAN // OFFICIAL HUB
         </span>
 
         {/* Share Button */}
         <button
           onClick={handleShare}
-          className="flex items-center justify-center w-9 h-9 rounded-xl frost-badge hover:border-cyan-400 text-cyan-300 hover:text-white transition-all shadow-sm active:scale-95"
+          className="flex items-center justify-center w-9 h-9 rounded-xl frost-badge hover:border-pink-400 text-pink-300 hover:text-white transition-all shadow-sm active:scale-95"
           title="שתף עמוד או העתק קישור"
           aria-label="Share profile"
         >
@@ -136,32 +136,32 @@ export default function App() {
           className="relative mt-2 mb-4 group cursor-pointer"
           onClick={() => handleTrackedClick('avatar_logo', 'Avatar Logo', null, 'utility')}
         >
-          {/* Icy Glow Ring */}
-          <div className="absolute -inset-4 bg-gradient-to-r from-cyan-500 via-sky-400 to-blue-600 rounded-3xl blur-xl opacity-60 group-hover:opacity-95 transition duration-700 group-hover:scale-105" />
+          {/* GTA VI Sunset Glow Ring */}
+          <div className="absolute -inset-4 bg-gradient-to-r from-amber-400 via-pink-500 to-purple-600 rounded-3xl blur-xl opacity-65 group-hover:opacity-95 transition duration-700 group-hover:scale-105" />
 
-          {/* Frame Border with Cyan Accent */}
-          <div className="relative p-1 rounded-2xl bg-gradient-to-b from-cyan-300 via-cyan-600 to-blue-900 shadow-[0_0_25px_rgba(0,180,255,0.6)]">
-            <div className="relative w-28 h-28 sm:w-32 sm:h-32 rounded-[14px] bg-[#050a16] flex items-center justify-center overflow-hidden border border-cyan-400/30">
+          {/* Frame Border with Vice City Sunset Accent */}
+          <div className="relative p-1 rounded-2xl bg-gradient-to-b from-amber-300 via-pink-500 to-purple-900 shadow-[0_0_28px_rgba(236,72,153,0.6)]">
+            <div className="relative w-28 h-28 sm:w-32 sm:h-32 rounded-[14px] bg-[#0d051a] flex items-center justify-center overflow-hidden border border-pink-400/35">
               
-              {/* Inner Cyber Grid */}
-              <div className="absolute inset-0 bg-[radial-gradient(#00b4ff_1px,transparent_1px)] [background-size:12px_12px] opacity-25" />
+              {/* Inner Vice Grid */}
+              <div className="absolute inset-0 bg-[radial-gradient(#ec4899_1px,transparent_1px)] [background-size:12px_12px] opacity-25" />
 
               {/* PARTIZAN OFFICIAL ATTACHED LOGO */}
               <img
-                src={partizanLogoLive}
+                src={partizanMainLogo}
                 alt="Partizan Gaming Logo"
-                //className="w-full h-full object-contain p-2 relative z-10 transition-transform duration-500 group-hover:scale-110 drop-shadow-[0_0_12px_rgba(0,180,255,0.7)]"
+                className="w-full h-full object-cover"
                 loading="eager"
               />
 
               {/* Glass Reflex */}
-              <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-cyan-200/10 to-transparent pointer-events-none" />
+              <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-pink-200/10 to-transparent pointer-events-none" />
             </div>
           </div>
 
           {/* Verified Creator Shield Badge */}
           <div
-            className="absolute -bottom-2 -left-2 bg-gradient-to-r from-cyan-500 to-blue-600 p-1.5 rounded-xl border border-cyan-200 shadow-[0_0_15px_#00b4ff] flex items-center justify-center"
+            className="absolute -bottom-2 -left-2 bg-gradient-to-r from-amber-500 via-pink-500 to-purple-600 p-1.5 rounded-xl border border-pink-200 shadow-[0_0_15px_#ec4899] flex items-center justify-center"
             title="גיימר מאומת"
           >
             <svg className="w-4 h-4 text-white" viewBox="0 0 24 24" fill="currentColor">
@@ -173,40 +173,40 @@ export default function App() {
         {/* STREAMER BRAND NAME & ESPORTS TITLES */}
         <div className="text-center space-y-1 mb-2">
           <div className="flex items-center justify-center gap-2">
-            <h1 className="text-3xl sm:text-4xl font-extrabold tracking-wider font-display frost-gradient-text uppercase drop-shadow-[0_4px_12px_rgba(0,180,255,0.4)]">
+            <h1 className="text-3xl sm:text-4xl font-extrabold tracking-wider font-display frost-gradient-text uppercase drop-shadow-[0_4px_14px_rgba(236,72,153,0.45)]">
               PARTIZAN
             </h1>
-            <span className="inline-flex items-center justify-center p-1 rounded-md bg-cyan-500/20 text-cyan-300 border border-cyan-400/40" title="Esports Star">
+            <span className="inline-flex items-center justify-center p-1 rounded-md bg-pink-500/20 text-amber-300 border border-pink-400/40 shadow-[0_0_10px_rgba(236,72,153,0.3)]" title="Esports Star">
               <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
                 <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
               </svg>
             </span>
           </div>
-          <p className="text-xs sm:text-sm font-medium text-cyan-300/90 font-gaming tracking-widest">
+          <p className="text-xs sm:text-sm font-bold text-transparent bg-clip-text bg-gradient-to-r from-amber-300 via-pink-300 to-purple-300 font-gaming tracking-widest">
             PartizaN Empire
           </p>
         </div>
 
-        {/* STREAMER BIO TAGS (SPLIT HIGHLIGHTS) */}
+        {/* STREAMER BIO TAGS (GTA VI VICE CITY HIGHLIGHTS) */}
         <div className="flex flex-wrap items-center justify-center gap-2 max-w-md mt-4 mb-5">
-          <span className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl text-xs sm:text-sm font-semibold frost-badge text-cyan-200 border-cyan-500/35 shadow-sm">
-            <TvMinimalPlay className="w-3.5 h-3.5 text-cyan-400" />
+          <span className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl text-xs sm:text-sm font-semibold frost-badge text-pink-100 border-pink-500/40 shadow-sm">
+            <TvMinimalPlay className="w-3.5 h-3.5 text-amber-400" />
             <span>יוצר תוכן</span>
           </span>
-          <span className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl text-xs sm:text-sm font-semibold frost-badge text-cyan-200 border-cyan-500/35 shadow-sm">
-            <Gamepad2 className="w-3.5 h-3.5 text-cyan-400" />
+          <span className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl text-xs sm:text-sm font-semibold frost-badge text-pink-100 border-pink-500/40 shadow-sm">
+            <Gamepad2 className="w-3.5 h-3.5 text-pink-400" />
             <span>גיימינג</span>
           </span>
-          <span className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl text-xs sm:text-sm font-semibold frost-badge text-cyan-200 border-cyan-500/35 shadow-sm">
-            <Cast className="w-3.5 h-3.5 text-cyan-400" />
+          <span className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl text-xs sm:text-sm font-semibold frost-badge text-pink-100 border-pink-500/40 shadow-sm">
+            <Cast className="w-3.5 h-3.5 text-fuchsia-400" />
             <span>שידורים חיים</span>
           </span>
-          <span className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl text-xs sm:text-sm font-semibold frost-badge text-cyan-200 border-cyan-500/35 shadow-sm">
-            <Trophy className="w-3.5 h-3.5 text-cyan-400" />
+          <span className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl text-xs sm:text-sm font-semibold frost-badge text-pink-100 border-pink-500/40 shadow-sm">
+            <Trophy className="w-3.5 h-3.5 text-amber-400" />
             <span>טורנירים ואתגרים</span>
           </span>
-          <span className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl text-xs sm:text-sm font-semibold frost-badge text-cyan-200 border-cyan-500/35 shadow-sm">
-            <Users className="w-3.5 h-3.5 text-cyan-400" />
+          <span className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl text-xs sm:text-sm font-semibold frost-badge text-pink-100 border-pink-500/40 shadow-sm">
+            <Users className="w-3.5 h-3.5 text-pink-400" />
             <span>קהילת Partizan</span>
           </span>
         </div>
@@ -216,7 +216,50 @@ export default function App() {
 
         {/* 5. GAMING LINK CARDS (HEBREW RTL) */}
         <div className="w-full flex flex-col space-y-3.5">
-          {/* 1. KICK (TOP FEATURED LIVE STREAM CARD) */}
+          {/* 1. PARTIZAN-IL PUBLIC (ISRAELI FIVEM DISCORD) */}
+          <LinkCard
+            href={LINKS.partizanIl}
+            title="PartizaN-IL Public"
+            subtitle="שרת הדיסקורד של שרת ה FIVEM הישראלי"
+            isFeatured={true}
+            badgeIcon={
+              <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                <path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.929 1.793 8.18 1.793 12.061 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.893.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.028zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z" />
+              </svg>
+            }
+            onClick={() =>
+              handleTrackedClick('partizan-il', 'PartizaN-IL Public', LINKS.partizanIl, 'discord_server')
+            }
+            iconBg="bg-black"
+            iconBorder="border-sky-400/60 shadow-[0_0_15px_rgba(56,189,248,0.4)]"
+            iconColor=""
+            icon={
+              <img
+                src={partizanIlLogo}
+                alt="PartizaN-IL Public"
+                className="w-full h-full object-cover group-hover:scale-110 transition-transform"
+              />
+            }
+          />
+
+          {/* 2. TIKTOK */}
+          <LinkCard
+            href={LINKS.tiktok}
+            title="TikTok"
+            subtitle="קליפים ויראליים, רגעי שיא וצחוקים מהלייבים"
+            isFeatured={true}
+            onClick={() => handleTrackedClick('tiktok', 'TikTok', LINKS.tiktok, 'social_link')}
+            iconBg="bg-black"
+            iconBorder="border-fuchsia-400/60 shadow-[0_0_15px_rgba(217,70,239,0.35)]"
+            iconColor="text-pink-300"
+            icon={
+              <svg className="w-6 h-6 fill-current drop-shadow-[0_0_8px_rgba(236,72,153,0.7)]" viewBox="0 0 24 24">
+                <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z" />
+              </svg>
+            }
+          />
+
+          {/* 3. KICK (TOP FEATURED LIVE STREAM CARD) */}
           <LinkCard
             href={LINKS.kick}
             title="Kick"
@@ -233,7 +276,7 @@ export default function App() {
             }
           />
 
-          {/* 2. YOUTUBE (TOP FEATURED OFFICIAL VIDEO CHANNEL) */}
+          {/* 4. YOUTUBE (TOP FEATURED OFFICIAL VIDEO CHANNEL) */}
           <LinkCard
             href={LINKS.youtube}
             title="Youtube"
@@ -254,7 +297,7 @@ export default function App() {
             }
           />
 
-          {/* 3. PRRP - ALLOWLIST 5.0 */}
+          {/* 5. PRRP - ALLOWLIST 5.0 */}
           <LinkCard
             href={LINKS.prrp}
             title="PRRP - Allowlist 5.0"
@@ -280,7 +323,7 @@ export default function App() {
             }
           />
 
-          {/* 4. PRWEST REBORN */}
+          {/* 6. PRWEST REBORN */}
           <LinkCard
             href={LINKS.prWest}
             title="PRWest Reborn"
@@ -306,7 +349,7 @@ export default function App() {
             }
           />
 
-          {/* 5. PARTIZAN EMPIRE DISCORD SERVER */}
+          {/* 7. PARTIZAN EMPIRE DISCORD SERVER */}
           <LinkCard
             href={LINKS.discord}
             title="PartizaN Empire"
@@ -321,35 +364,18 @@ export default function App() {
               handleTrackedClick('discord', 'PartizaN Empire', LINKS.discord, 'discord_server')
             }
             iconBg="bg-black"
-            iconBorder="border-cyan-400/60 shadow-[0_0_15px_rgba(0,229,255,0.4)]"
+            iconBorder="border-pink-400/60 shadow-[0_0_15px_rgba(236,72,153,0.4)]"
             iconColor=""
             icon={
               <img
                 src={partizanLogo}
                 alt="PartizaN Empire"
-                className="w-9 h-9 object-contain drop-shadow-[0_0_8px_rgba(0,180,255,0.7)] group-hover:scale-110 transition-transform"
+                className="w-9 h-9 object-contain drop-shadow-[0_0_8px_rgba(236,72,153,0.7)] group-hover:scale-110 transition-transform"
               />
             }
           />
 
-          {/* 6. TIKTOK */}
-          <LinkCard
-            href={LINKS.tiktok}
-            title="TikTok"
-            subtitle="קליפים ויראליים, רגעי שיא וצחוקים מהלייבים"
-            isFeatured={true}
-            onClick={() => handleTrackedClick('tiktok', 'TikTok', LINKS.tiktok, 'social_link')}
-            iconBg="bg-black"
-            iconBorder="border-cyan-400/60 shadow-[0_0_15px_rgba(0,229,255,0.35)]"
-            iconColor="text-cyan-300"
-            icon={
-              <svg className="w-6 h-6 fill-current drop-shadow-[0_0_8px_rgba(0,229,255,0.7)]" viewBox="0 0 24 24">
-                <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z" />
-              </svg>
-            }
-          />
-
-          {/* 7. INSTAGRAM */}
+          {/* 8. INSTAGRAM */}
           <LinkCard
             href={LINKS.instagram}
             title="Instagram"
@@ -383,20 +409,20 @@ export default function App() {
                 'contact'
               )
             }
-            className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-[#091733]/80 hover:bg-[#0e2554] border border-cyan-500/35 hover:border-cyan-400 text-xs sm:text-sm font-medium text-cyan-200 hover:text-white transition-all shadow-[0_0_15px_rgba(0,180,255,0.15)] hover:shadow-[0_0_20px_rgba(0,180,255,0.3)] active:scale-95 group"
+            className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-[#1a092e]/85 hover:bg-[#2a0e4a] border border-pink-500/40 hover:border-pink-400 text-xs sm:text-sm font-medium text-pink-200 hover:text-white transition-all shadow-[0_0_15px_rgba(236,72,153,0.18)] hover:shadow-[0_0_22px_rgba(236,72,153,0.38)] active:scale-95 group"
           >
-            <Handshake className="w-4 h-4 text-cyan-400 group-hover:scale-110 transition-transform flex-shrink-0" />
+            <Handshake className="w-4 h-4 text-amber-400 group-hover:scale-110 transition-transform flex-shrink-0" />
             <span>לפניות עסקיות -</span>
-            <span dir="ltr" className="font-mono text-cyan-300 group-hover:text-cyan-200">oryano11@gmail.com</span>
+            <span dir="ltr" className="font-mono text-pink-300 group-hover:text-amber-200">oryano11@gmail.com</span>
           </a>
 
           {/* Credits & Copyright */}
           <div className="space-y-1">
             <p className="text-xs text-slate-400 font-medium">
-              © 2026 כל הזכויות שמורות ל- <span className="text-cyan-300 font-semibold font-display">PARTIZAN</span>
+              © 2026 כל הזכויות שמורות ל- <span className="text-pink-300 font-semibold font-display">PARTIZAN</span>
             </p>
             <p className="text-[11px] text-slate-400 font-medium">
-              Developed by <span className="text-cyan-300 font-semibold">MaxGG-Dev</span>
+              Developed by <span className="text-amber-300 font-semibold">MaxGG-Dev</span>
             </p>
           </div>
         </footer>
