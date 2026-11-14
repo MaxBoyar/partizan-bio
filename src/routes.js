@@ -6,7 +6,7 @@ export const LINKS = {
   kick: 'https://kick.com/partizanktv',
   youtube: 'https://www.youtube.com/@PartizaNYT',
   prrp: 'https://discord.gg/prrp',
-  prWest: 'https://discord.gg/PZ6kqmGdn',
+  prWest: 'https://discord.gg/8U5bfnbcc6',
   discord: 'https://discord.gg/G46P86Q5GS',
   tiktok: 'https://www.tiktok.com/@oryan_azulay',
   instagram: 'https://www.instagram.com/oryan_azulay/',
